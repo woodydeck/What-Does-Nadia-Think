@@ -44,7 +44,7 @@ Winnings are not sent automatically to you. You must transact with the contract 
   
 You can think of the "Claim Winnings" function as asking a teller to send you your money. It's a message without any Ether being attached, but it unfortunately does cost you gas due to the way things work currently in Ethereum. Some day it might be possible for a contract to automatically to do this.
 
-## What Happens if Nobody Selects the Correct Answer
+## What Happens if Nobody Selects the Correct Answer?
 
 No integrity fee is taken, and all Ether is refunded. You will need to manually ask for a refund by transacting with refund() and including the integer of your answer. If you chose Answer 1, then you would pass through the integer 0 to the contract as all arrays in Solidity start from 0. This differs from the process of win you chose the winning answer because the contract does not anticipate refund situations occurring very often. The additional complexity to make it a one click operation is not worth the increased gas costs.
   
