@@ -1,4 +1,9 @@
-﻿
+﻿## Premise of the Game
+
+What Does Nadia Think?™ was made to challenge people's perceptions in a familiar multiple choice quiz format. You can't simply search for the answers, you have to understand the mind of the person giving them. This is much more useful socially than just being a boffin who can spout off random facts they memorized.
+
+Not every single idea or service should be put on a blockchain. With the power of the Ethereum EVM, the game is able to harness and highlight the strength of smart contracts. Real time games don't mesh well with the asynchronous nature of blockchain technologies. What Does Nadia Think?™ takes advantage of decentralization to split proceeds without a broker, intermediary, or house getting involved in payments. Due to the politically incorrect nature of the content, this is a big deal. There is no possibility for a payments provider to block, steal, or delay payments because they disagree with the content being delivered. The game seeks to highlight freedom of speech.
+
 ## You Need a Web 3.0 Enabled Browser
 
 The What Does Nadia Think?™ platform requires a Web 3.0 enabled browser. You can enable Web 3.0 support on Chrome, Firefox, or Brave Browser with the MetaMask extension, or you may use standalone browsers like Mist and Parity. You can also use the Cipher iOS app to play on your iPhone.  
