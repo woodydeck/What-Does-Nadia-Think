@@ -15,6 +15,7 @@ contract WhatDoesNadiaThink {
     uint256 public integrityPercentage;
     uint256 public winningAnswer;
     uint256 public total;
+    uint256 public addedEtherBonus;
     
     event AddressandAnswer(address indexed _from, uint256 indexed _result, uint _value);
 
@@ -34,7 +35,8 @@ contract WhatDoesNadiaThink {
         answerHash = _answerHash; // Hash of correct answer to verify integrity of the posted answer.
         integrityPercentage = 5; // The market integrity fee (5% of the total) goes to the contract owner. It is to strongly encourage answer secrecy and fair play. The amount is about double what could be realistically stolen via insider trading without being easily detected forensically.  
         winningAnswer = 1234; // Set initially to 1234 (all possible answers) so the frontend can recognize when the market is closed, but not yet resolved with an answer. The variable winningAnswer is purely statistical in nature.
-        total = msg.value; // This contract version is payable so the market can be seeded with free Ether to incentivize answers.
+        total = msg.value; // This contract version is payable so the market can be seeded with free Ether to incentivize answers. The total will rise with additional bets.
+        addedEtherBonus = total; // Keeps track of how much free Ether is seeded for Web 3.0 purposed and so the owner can be refunded the amount if nobody picks the right answer (otherwise it would be stuck).    
     }
 
     enum States { Open, Resolved, Cancelled }
@@ -100,5 +102,11 @@ contract WhatDoesNadiaThink {
         uint256 amount = answerAmount[msg.sender][result]; // You have to manually choose which answer you bet on because every answer is now entitled to a refund. Please when manually requesting a refund outside of the Dapp that Answer 1 is 0, Answer 2 is 1, Answer is 3, and Answer 4 is 3 as arrays start from 0. There is nothing bad that happens if you screw this up except a waste of gas. 
         answerAmount[msg.sender][result] = 0;
         msg.sender.transfer(amount);
+    }
+    
+    function refundEtherBonus() public { // Refunds the bonus added to the contract to the owner in the event the market is cancelled.
+        require(state == States.Cancelled);
+        require(msg.sender == owner);
+        msg.sender.transfer(addedEtherBonus);
     }
 }
